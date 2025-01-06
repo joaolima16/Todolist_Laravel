@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100)->nullable();
             $table->text('description')->nullable();
-            $table->enum('priority', ['critical', 'medium', 'low']);
+            $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
