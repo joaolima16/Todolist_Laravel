@@ -1,0 +1,17 @@
+@import "../../resources/styles/Variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+15&display=swap');
+
+
+body{
+    background-color: $background-default;
+}
+.container-login{
+   padding: 40px;
+   width: 100%;
+}
+.title{
+    font-family: 'Jersey 15', serif;
+}
+.subtitle{
+    font-family: 'Jersey 10', serif;
+}
