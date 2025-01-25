@@ -19,6 +19,7 @@ export default function InputField({ type, name, onChange, placeholder, value, l
                 onChange={onChange}
                 placeholder={placeholder}
                 value={value}
+                required={true}
             />
         </>
     )

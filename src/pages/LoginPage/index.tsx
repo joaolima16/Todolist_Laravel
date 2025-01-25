@@ -4,37 +4,28 @@ import Image from 'next/image';
 import { Jersey_15 } from 'next/font/google';
 import InputField from '@/components/forms/InputField';
 import { useState } from 'react';
+import PasswordField from '@/components/forms/PasswordField';
 export default function LoginPage() {
-    const [value, setValue] = useState();
-    // const jersey = Jersey_15({
-    //     subsets: ['latin'],
-    //     weight: ["400"],
-    //     style: ['normal'],
-    //     variable: '--font'
-    // });
-
-
+    const [value, setValue] = useState({ email: "", password: "" });
     return (
         <div className='container-login flex flex-row justify-around gap-30'>
             <section className='title_subtitle flex flex-col align-baseline'>
                 <h1 className='title text-6xl text-white '>Controle de tarefas</h1>
                 <h2 className='subtitle text-center text-5xl text-white'>Login</h2>
-                <form action="" className='flex flex-col gap-2 top-10 relative'>
+                <form action="" className='flex flex-col gap-3 top-10 relative w-full'>
                     <InputField
                         label='Email'
                         name='input-email'
                         placeholder='Digite seu email'
-                        type='text'
-                        onChange={(e) => console.log(e)}
-                        value={value}
+                        type='email'
+                        onChange={(e) => setValue({ ...value, email: e.target.value })}
+                        value={value.email}
                     />
-                    <InputField
-                        label='Senha'
-                        name='input-senha'
+                    <PasswordField
+                        value={value.password}
+                        name='input-password'
                         placeholder='Digite sua senha'
-                        type='text'
-                        onChange={(e) => console.log(e)}
-                        value={value}
+                        onChange={(e) => setValue({ ...value, password: e.target.value })}
                     />
                 </form>
             </section>
