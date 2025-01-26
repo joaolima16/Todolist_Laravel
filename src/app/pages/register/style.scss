@@ -1,0 +1,26 @@
+@import "../../../resources/styles/Variables.scss";
+
+
+
+body{
+    background-color: $background-default;
+}
+.container-register{
+    padding: 20px;
+    width: 100%;
+ }
+ .title{
+     font-family: $font-jersey-15
+ }
+ .subtitle{
+     font-family: $font-jersey-10;
+ }
+ .btn_submit{
+     background-color: $background-secondary;
+     padding: 10px;
+     color: #fff;
+    font-family: $font-open-sans;
+    font-size: 1.2em;
+    font-weight: bold;
+ }
+ 

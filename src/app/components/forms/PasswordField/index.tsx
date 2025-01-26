@@ -3,7 +3,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 interface PasswordProps {
     placeholder: string
-    onChange: () => void
+    onChange: (event: React.ChangeEvent<HTMLInputElement> ) => void
     name: string
     value: string
 }

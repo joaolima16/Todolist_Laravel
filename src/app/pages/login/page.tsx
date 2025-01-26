@@ -1,14 +1,29 @@
 'use client';
+
 import './style.scss'
 import Image from 'next/image';
-import { Jersey_15 } from 'next/font/google';
-import InputField from '@/components/forms/InputField';
-import { useState } from 'react';
-import PasswordField from '@/components/forms/PasswordField';
-export default function LoginPage() {
+import InputField from '@/app/components/forms/InputField';
+import { useEffect, useState } from 'react';
+import PasswordField from '@/app/components/forms/PasswordField';
+import Link from 'next/link';
+import Snackbar from '@/app/components/Snackbar';
+export default function Login() {
     const [value, setValue] = useState({ email: "", password: "" });
+    const [isLogged, setIsLogged] = useState<Boolean | null>(null);
+    const handleSubmit = (event: React.FormEvent) => {
+        setIsLogged(false);
+        event.preventDefault();
+        console.log(isLogged)
+    }
+    useEffect(() => {
+        // if (isLogged === false || isLogged === true) {
+        //     setTimeout(() => {
+        //         setIsLogged(null);
+        //     }, 3000);
+        // }
+    }, [isLogged]);
     return (
-        <div className='container-login flex flex-row justify-around gap-30'>
+        <div className='container-login flex flex-row justify-around gap-10'>
             <section className='title_subtitle flex flex-col align-baseline'>
                 <h1 className='title text-6xl text-white '>Controle de tarefas</h1>
                 <h2 className='subtitle text-center text-5xl text-white'>Login</h2>
@@ -27,6 +42,10 @@ export default function LoginPage() {
                         placeholder='Digite sua senha'
                         onChange={(e) => setValue({ ...value, password: e.target.value })}
                     />
+                    <button className="btn_submit" onClick={handleSubmit}>
+                        Logar
+                    </button>
+                    <span className='text-white text-lg text-start font-bold'>Não possui cadastro? <Link href="/pages/register" className='font-medium hover:underline transition delay-1000'>Cadastre-se</Link></span>
                 </form>
             </section>
             <div className='container-image'>
@@ -39,7 +58,13 @@ export default function LoginPage() {
                 />
 
             </div>
+          
+            {
+                isLogged !== null &&(
+                    <Snackbar variant={isLogged ? 'success': 'error'} message={isLogged? 'Usuário logado!': 'Erro ao logar'}/>
+                )}
 
+            {/* <Snackbar /> */}
         </div>
     )
 }
